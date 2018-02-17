@@ -9,13 +9,10 @@ public class Result {
     private Boolean checked;
     private Boolean ex;
 
-    public Result() {
-    }
-
-    public Result(String r, Boolean b, Boolean c) {
-        this.result = r;
-        this.checked = b;
-        this.ex = c;
+    public Result(String result, Boolean checked, Boolean ex) {
+        this.result = result;
+        this.checked = checked;
+        this.ex = ex;
     }
 
     public void setResult(String r) {
@@ -26,16 +23,16 @@ public class Result {
         return this.result;
     }
 
-    public void setChecked(Boolean b) {
-        this.checked = b;
+    public void setChecked(Boolean checked) {
+        this.checked = checked;
     }
 
     public Boolean getChecked() {
         return this.checked;
     }
 
-    public void setEx(Boolean b) {
-        this.ex = b;
+    public void setEx(Boolean ex) {
+        this.ex = ex;
     }
 
     public boolean getEx() {

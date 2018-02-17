@@ -1,4 +1,4 @@
-package flynn.tim.ciphersolver.activities;
+package flynn.tim.ciphersolver.frequency;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -26,8 +26,6 @@ import java.util.List;
 import java.util.Map;
 
 import flynn.tim.ciphersolver.R;
-import flynn.tim.ciphersolver.logic.FrequencyAnalysis;
-import flynn.tim.ciphersolver.logic.FrequencyPair;
 
 public class FrequencyActivity extends AppCompatActivity {
 

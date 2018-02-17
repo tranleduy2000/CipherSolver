@@ -1,4 +1,4 @@
-package flynn.tim.ciphersolver.activities;
+package flynn.tim.ciphersolver.vigenere;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputFilter;
 import android.text.Spanned;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
@@ -23,12 +21,10 @@ import java.util.ArrayList;
 import flynn.tim.ciphersolver.MyListAdapter;
 import flynn.tim.ciphersolver.R;
 import flynn.tim.ciphersolver.Result;
-import flynn.tim.ciphersolver.logic.VigenereCipher;
-
 
 public class VigenereCipherActivity extends AppCompatActivity {
 
-    ArrayList<Result> resultsList = new ArrayList<>();
+    private ArrayList<Result> resultsList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +38,6 @@ public class VigenereCipherActivity extends AppCompatActivity {
         final RadioButton decrypt = findViewById(R.id.radioButton4);
         final Button solve = findViewById(R.id.button3);
         encrypt.setChecked(true);
-
-        final VigenereCipher vc = new VigenereCipher();
 
         ciphertext.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
         ciphertext.setFilters(new InputFilter[]{
@@ -90,7 +84,7 @@ public class VigenereCipherActivity extends AppCompatActivity {
                 } else if (keyword.getText().toString().trim().equals("")) {
                     resultsList.add(new Result("No keyword entered!", false, true));
                 } else {
-                    if (encrypt.isChecked() == true) {
+                    if (encrypt.isChecked()) {
                         result = VigenereCipher.encrypt(ciphertext.getText().toString().toUpperCase().trim(), keyword.getText().toString().trim());
                         resultsList.add(new Result(result, true, false));
                     } else {
@@ -120,26 +114,4 @@ public class VigenereCipherActivity extends AppCompatActivity {
 
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        //getMenuInflater().inflate(R.menu.menu_vigenere_cipher, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }

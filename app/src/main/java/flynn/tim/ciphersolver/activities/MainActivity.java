@@ -1,23 +1,23 @@
-package flynn.tim.ciphersolver;
+package flynn.tim.ciphersolver.activities;
 
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
-import flynn.tim.ciphersolver.activities.AtbashActivity;
-import flynn.tim.ciphersolver.activities.CaesarCipherActivity;
-import flynn.tim.ciphersolver.activities.FrequencyActivity;
-import flynn.tim.ciphersolver.activities.Rot13CipherActivity;
-import flynn.tim.ciphersolver.activities.StringReversalActivity;
-import flynn.tim.ciphersolver.activities.VigenereCipherActivity;
+import flynn.tim.ciphersolver.MainListAdapter;
+import flynn.tim.ciphersolver.R;
+import flynn.tim.ciphersolver.atbash.AtbashActivity;
+import flynn.tim.ciphersolver.caesar.CaesarCipherActivity;
+import flynn.tim.ciphersolver.frequency.FrequencyActivity;
+import flynn.tim.ciphersolver.Result;
+import flynn.tim.ciphersolver.rot13.Rot13CipherActivity;
+import flynn.tim.ciphersolver.vigenere.VigenereCipherActivity;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -26,12 +26,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         ColorDrawable newColor = new ColorDrawable(getResources().getColor(R.color.accent_material_light));
         getSupportActionBar().setBackgroundDrawable(newColor);
         getSupportActionBar().setElevation(0);
         getSupportActionBar().setTitle("");
-        final ListView listview = (ListView) findViewById((R.id.listView));
+        final ListView listview = findViewById((R.id.listView));
         final ArrayList<Result> cipherList = new ArrayList<>();
         cipherList.add(new Result("Caesar Cipher", false, false));
         cipherList.add(new Result("Frequency Analysis", false, false));
@@ -40,82 +39,36 @@ public class MainActivity extends AppCompatActivity {
         cipherList.add(new Result("Atbash Cipher", false, false));
         //cipherList.add(new Result ("Letter-Number Cipher", false, false));
         cipherList.add(new Result("Reverse Text", false, false));
-
         MainListAdapter adapter = new MainListAdapter(getApplicationContext(), R.layout.list_item_main, cipherList);
         listview.setAdapter(adapter);
         //Set click listener for each item in the listview
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
                 if (cipherList.get(position).getResult().contentEquals("Caesar Cipher")) {
-                    Intent i = new Intent(MainActivity.this, CaesarCipherActivity.class);
-                    MainActivity.this.startActivity(i);
-                    //MainActivity.this.finish();
+                    Intent intent = new Intent(MainActivity.this, CaesarCipherActivity.class);
+                    MainActivity.this.startActivity(intent);
                 }
-
                 if (cipherList.get(position).getResult().contentEquals("Frequency Analysis")) {
                     Intent i = new Intent(MainActivity.this, FrequencyActivity.class);
                     MainActivity.this.startActivity(i);
-                    //MainActivity.this.finish();
                 }
-
                 if (cipherList.get(position).getResult().contentEquals("Rot-13 Cipher")) {
                     Intent i = new Intent(MainActivity.this, Rot13CipherActivity.class);
                     MainActivity.this.startActivity(i);
-                    //MainActivity.this.finish();
                 }
-
                 if (cipherList.get(position).getResult().contentEquals("Vigenère Cipher")) {
                     Intent i = new Intent(MainActivity.this, VigenereCipherActivity.class);
                     MainActivity.this.startActivity(i);
-                    //MainActivity.this.finish();
                 }
-
-                if (cipherList.get(position).getResult().contentEquals("Reverse Text")) {
-                    Intent i = new Intent(MainActivity.this, StringReversalActivity.class);
-                    MainActivity.this.startActivity(i);
-                    //MainActivity.this.finish();
-                }
-
                 if (cipherList.get(position).getResult().contentEquals("Atbash Cipher")) {
                     Intent i = new Intent(MainActivity.this, AtbashActivity.class);
                     MainActivity.this.startActivity(i);
-                    //MainActivity.this.finish();
+
                 }
-
-
-                /*
-                if(cipherList.get(position).getResult().contentEquals("Letter-Number Cipher"))
-                {
-                    Intent i = new Intent(MainActivity.this, LetterNumberActivity.class);
-                    MainActivity.this.startActivity(i);
-                    //MainActivity.this.finish();
-                }*/
             }
         });
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        //getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }

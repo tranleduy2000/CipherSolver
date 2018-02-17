@@ -1,11 +1,9 @@
-package flynn.tim.ciphersolver.activities;
+package flynn.tim.ciphersolver.rot13;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -19,30 +17,29 @@ import java.util.ArrayList;
 
 import flynn.tim.ciphersolver.MyListAdapter;
 import flynn.tim.ciphersolver.R;
+import flynn.tim.ciphersolver.caesar.CaesarCipher;
 import flynn.tim.ciphersolver.Result;
-import flynn.tim.ciphersolver.logic.CaesarCipher;
 
 
 public class Rot13CipherActivity extends AppCompatActivity {
 
-    ArrayList<Result> resultsList = new ArrayList<>();
+    private ArrayList<Result> resultsList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rot13_cipher);
 
-        final EditText ciphertext = (EditText) findViewById(R.id.editText2);
-        final Button solve = (Button) findViewById(R.id.button3);
-        final ListView listview = (ListView) findViewById(R.id.listView3);
-        final RadioButton encrypt = (RadioButton) findViewById(R.id.radioButton3);
+        final EditText ciphertext = findViewById(R.id.editText2);
+        final Button solve = findViewById(R.id.button3);
+        final ListView listview = findViewById(R.id.listView3);
+        final RadioButton encrypt = findViewById(R.id.radioButton3);
         encrypt.setChecked(true);
-        final CaesarCipher cc = new CaesarCipher();
 
         solve.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 InputMethodManager inputManager = (InputMethodManager)
-                        getSystemService(Rot13CipherActivity.this.INPUT_METHOD_SERVICE);
+                        getSystemService(INPUT_METHOD_SERVICE);
 
                 inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
                         InputMethodManager.HIDE_NOT_ALWAYS);
@@ -51,7 +48,7 @@ public class Rot13CipherActivity extends AppCompatActivity {
                 if (ciphertext.getText().toString().equals("")) {
                     resultsList.add(new Result("No ciphertext entered!", false, true));
                 } else {
-                    result = cc.encode(ciphertext.getText().toString().toUpperCase(), 13);
+                    result = CaesarCipher.encode(ciphertext.getText().toString().toUpperCase(), 13);
                     resultsList.add(new Result(result, true, false));
                 }
 
@@ -74,28 +71,5 @@ public class Rot13CipherActivity extends AppCompatActivity {
                 });
             }
         });
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        //getMenuInflater().inflate(R.menu.menu_rot13_cipher, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }

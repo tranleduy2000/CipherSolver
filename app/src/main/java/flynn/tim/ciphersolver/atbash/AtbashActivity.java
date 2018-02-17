@@ -1,48 +1,41 @@
-package flynn.tim.ciphersolver.activities;
+package flynn.tim.ciphersolver.atbash;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.RadioButton;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import flynn.tim.ciphersolver.LetterNumber;
 import flynn.tim.ciphersolver.MyListAdapter;
 import flynn.tim.ciphersolver.R;
 import flynn.tim.ciphersolver.Result;
 
 
-public class LetterNumberActivity extends AppCompatActivity {
+public class AtbashActivity extends AppCompatActivity {
 
-    ArrayList<Result> resultsList = new ArrayList<>();
+    private ArrayList<Result> resultsList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rot13_cipher);
+        setContentView(R.layout.activity_atbash);
 
-        final EditText ciphertext = (EditText) findViewById(R.id.editText2);
-        final Button solve = (Button) findViewById(R.id.button3);
-        final ListView listview = (ListView) findViewById(R.id.listView3);
-        final RadioButton encrypt = (RadioButton) findViewById(R.id.radioButton3);
-        encrypt.setChecked(true);
-        final LetterNumber ln = new LetterNumber();
+        final EditText ciphertext = findViewById(R.id.editText2);
+        final Button solve = findViewById(R.id.button3);
+        final ListView listview = findViewById(R.id.listView3);
 
         solve.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 InputMethodManager inputManager = (InputMethodManager)
-                        getSystemService(LetterNumberActivity.this.INPUT_METHOD_SERVICE);
+                        getSystemService(INPUT_METHOD_SERVICE);
 
                 inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
                         InputMethodManager.HIDE_NOT_ALWAYS);
@@ -51,7 +44,7 @@ public class LetterNumberActivity extends AppCompatActivity {
                 if (ciphertext.getText().toString().equals("")) {
                     resultsList.add(new Result("No ciphertext entered!", false, true));
                 } else {
-                    result = ln.encrypt(ciphertext.getText().toString().toUpperCase());
+                    result = Atbash.decrypt(ciphertext.getText().toString().toUpperCase());
                     resultsList.add(new Result(result, true, false));
                 }
 
@@ -77,25 +70,4 @@ public class LetterNumberActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        //getMenuInflater().inflate(R.menu.menu_rot13_cipher, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }

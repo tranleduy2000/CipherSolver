@@ -1,20 +1,13 @@
-package flynn.tim.ciphersolver.logic;
+package flynn.tim.ciphersolver.frequency;
 
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Scanner;
 
 /**
  * @author Tim
  */
-public class FrequencyAnalysis {
+class FrequencyAnalysis {
 
-    public void FrequencyAnalysis() {
-
-    }
-
-    public HashMap analyze(String fa) {
+    HashMap analyze(String fa) {
         HashMap<Character, Integer> map = new HashMap<Character, Integer>();
 
         for (int i = 0; i < fa.length(); i++) {

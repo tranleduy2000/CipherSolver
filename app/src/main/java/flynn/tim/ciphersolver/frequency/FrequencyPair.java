@@ -1,4 +1,4 @@
-package flynn.tim.ciphersolver.logic;
+package flynn.tim.ciphersolver.frequency;
 
 /**
  * Created by Tim on 8/19/2015.

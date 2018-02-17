@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="flynn.tim.ciphersolver" >
+    package="flynn.tim.ciphersolver">
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/lock_light"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
-            android:label="Cipher Solver" >
+            android:name=".activities.MainActivity"
+            android:label="Cipher Solver">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,48 +17,21 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.CaesarCipherActivity"
-            android:label="Caesar Cipher"
-            android:parentActivityName=".MainActivity" >
-        </activity>
+            android:name=".caesar.CaesarCipherActivity"
+            android:label="Caesar Cipher" />
         <activity
-            android:name=".activities.StringReversalActivity"
-            android:label="Reverse Text"
-            android:parentActivityName=".MainActivity" >
-        </activity>
+            android:name=".atbash.AtbashActivity"
+            android:label="Atbash" />
         <activity
-            android:name=".activities.AtbashActivity"
-            android:label="Atbash"
-            android:parentActivityName=".MainActivity" >
-        </activity>
+            android:name=".vigenere.VigenereCipherActivity"
+            android:label="Vigenère Cipher" />
         <activity
-            android:name=".activities.LetterNumberActivity"
-            android:label="Letter-Number Cipher"
-            android:parentActivityName=".MainActivity" >
-        </activity>
+            android:name=".frequency.FrequencyActivity"
+            android:label="Frequency Analysis" />
+
         <activity
-            android:name=".activities.VigenereCipherActivity"
-            android:label="Vigenère Cipher"
-            android:parentActivityName=".MainActivity" >
-        </activity>
-        <activity
-            android:name=".activities.FrequencyActivity"
-            android:label="Frequency Analysis"
-            android:parentActivityName=".MainActivity" >
-        </activity>
-        <activity
-            android:name=".activities.SplashScreenActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme" >
-        </activity>
-        <activity
-            android:name=".activities.Rot13CipherActivity"
-            android:label="Rot-13 Cipher"
-            android:parentActivityName=".MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="flynn.tim.ciphersolver.MainActivity" />
-        </activity>
+            android:name=".rot13.Rot13CipherActivity"
+            android:label="Rot-13 Cipher" />
     </application>
 
 </manifest>

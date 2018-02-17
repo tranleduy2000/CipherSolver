@@ -1,13 +1,10 @@
-package flynn.tim.ciphersolver.activities;
+package flynn.tim.ciphersolver.caesar;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;
-import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
@@ -24,11 +21,10 @@ import java.util.ArrayList;
 import flynn.tim.ciphersolver.MyListAdapter;
 import flynn.tim.ciphersolver.R;
 import flynn.tim.ciphersolver.Result;
-import flynn.tim.ciphersolver.logic.CaesarCipher;
 
 public class CaesarCipherActivity extends AppCompatActivity {
 
-    ArrayList<Result> resultsList = new ArrayList<>();
+    private ArrayList<Result> resultsList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +58,7 @@ public class CaesarCipherActivity extends AppCompatActivity {
                 } else {
 
                     if (offset.getSelectedItem().toString().equalsIgnoreCase("All")) {
-                        if (encrypt.isChecked() == true) {
+                        if (encrypt.isChecked()) {
                             for (int i = 1; i <= 26; i++) {
                                 //Store the value of the encode with the given offset in result
 
@@ -94,7 +90,7 @@ public class CaesarCipherActivity extends AppCompatActivity {
                             }
                         }
                     } else {
-                        if (encrypt.isChecked() == true) {
+                        if (encrypt.isChecked()) {
                             result = CaesarCipher.encode(userString.getText().toString(), Integer.parseInt(offset.getSelectedItem().toString()));
                             resultsList.add(new Result(result, true, false));
                         } else {
@@ -111,12 +107,12 @@ public class CaesarCipherActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                        if (resultsList.get(position).getEx() == false && resultsList.get(position).getChecked() == false) {
+                        if (!resultsList.get(position).getEx() && resultsList.get(position).getChecked() == false) {
                             resultsList.get(position).setEx(true);
-                        } else if (resultsList.get(position).getEx() == true) {
+                        } else if (resultsList.get(position).getEx()) {
                             resultsList.get(position).setEx(false);
                             resultsList.get(position).setChecked(true);
-                        } else if (resultsList.get(position).getChecked() == true) {
+                        } else if (resultsList.get(position).getChecked()) {
                             resultsList.get(position).setChecked(false);
                         }
                         adapter.updateList(resultsList);
@@ -153,25 +149,5 @@ public class CaesarCipherActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        //getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }

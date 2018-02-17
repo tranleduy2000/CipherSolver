@@ -1,4 +1,4 @@
-package flynn.tim.ciphersolver.logic;
+package flynn.tim.ciphersolver.caesar;
 
 import java.io.IOException;
 
@@ -9,10 +9,8 @@ import java.io.IOException;
 
 public class CaesarCipher {
 
-    public static void main(String[] args) throws IOException {
-    }
 
-    public static String decode(String enc, int offset) {
+    static String decode(String enc, int offset) {
         return encode(enc, 26 - offset);
     }
 

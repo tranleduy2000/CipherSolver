@@ -1,10 +1,8 @@
-package flynn.tim.ciphersolver.logic;
+package flynn.tim.ciphersolver.atbash;
 
-public class Atbash {
-    public static void main(String[] args) {
-    }
+class Atbash {
 
-    public static String decrypt(String message) {
+    static String decrypt(String message) {
         StringBuilder decoded = new StringBuilder();
         for (char c : message.toCharArray()) {
             if (Character.isLetter(c)) {
