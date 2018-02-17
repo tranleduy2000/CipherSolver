@@ -4,9 +4,9 @@ package flynn.tim.ciphersolver.vigenere;
  * Created by Tim on 3/22/2015.
  * Code modified from source provided at: http://rosettacode.org/wiki/Vigen%C3%A8re_cipher#Java
  */
-public class VigenereCipher {
+class VigenereCipher {
 
-    public static String encrypt(String text, final String key) {
+    static String encrypt(String text, final String key) {
         String res = "";
         text = text.toUpperCase();
         for (int i = 0, j = 0; i < text.length(); i++) {

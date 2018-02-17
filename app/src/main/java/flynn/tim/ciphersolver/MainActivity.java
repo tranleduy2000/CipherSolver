@@ -1,4 +1,4 @@
-package flynn.tim.ciphersolver.activities;
+package flynn.tim.ciphersolver;
 
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
@@ -10,12 +10,9 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-import flynn.tim.ciphersolver.MainListAdapter;
-import flynn.tim.ciphersolver.R;
 import flynn.tim.ciphersolver.atbash.AtbashActivity;
 import flynn.tim.ciphersolver.caesar.CaesarCipherActivity;
 import flynn.tim.ciphersolver.frequency.FrequencyActivity;
-import flynn.tim.ciphersolver.Result;
 import flynn.tim.ciphersolver.rot13.Rot13CipherActivity;
 import flynn.tim.ciphersolver.vigenere.VigenereCipherActivity;
 
