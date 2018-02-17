@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
         cipherList.add(new Result("Vigenère Cipher", false, false));
         cipherList.add(new Result("Atbash Cipher", false, false));
         //cipherList.add(new Result ("Letter-Number Cipher", false, false));
-        cipherList.add(new Result("Reverse Text", false, false));
         MainListAdapter adapter = new MainListAdapter(getApplicationContext(), R.layout.list_item_main, cipherList);
         listview.setAdapter(adapter);
         //Set click listener for each item in the listview
