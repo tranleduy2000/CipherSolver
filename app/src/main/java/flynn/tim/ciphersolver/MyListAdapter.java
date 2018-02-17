@@ -64,17 +64,13 @@ public class MyListAdapter extends BaseAdapter {
             convertView = mInflater.inflate(mLayout, parent, false);
         }
 
-        if(mArr.get(position).getChecked() == true) {
+        if (mArr.get(position).getChecked() == true) {
             ImageView imageview = (ImageView) convertView.findViewById(R.id.imageView1);
             imageview.setImageResource(R.drawable.check_mark);
-        }
-        else if(mArr.get(position).getEx() == true)
-        {
+        } else if (mArr.get(position).getEx() == true) {
             ImageView imageview = (ImageView) convertView.findViewById(R.id.imageView1);
             imageview.setImageResource(R.drawable.red_ex);
-        }
-        else
-        {
+        } else {
             ImageView imageview = (ImageView) convertView.findViewById(R.id.imageView1);
             imageview.setImageResource(R.drawable.question_mark);
         }
@@ -88,7 +84,7 @@ public class MyListAdapter extends BaseAdapter {
         return convertView;
     }
 
-    public void updateList(ArrayList<Result> newItems){
+    public void updateList(ArrayList<Result> newItems) {
         mArr = newItems;
         notifyDataSetChanged();
     }

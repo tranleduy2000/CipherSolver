@@ -17,42 +17,42 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CaesarCipherActivity"
+            android:name=".activities.CaesarCipherActivity"
             android:label="Caesar Cipher"
             android:parentActivityName=".MainActivity" >
         </activity>
         <activity
-            android:name=".StringReversalActivity"
+            android:name=".activities.StringReversalActivity"
             android:label="Reverse Text"
             android:parentActivityName=".MainActivity" >
         </activity>
         <activity
-            android:name=".AtbashActivity"
+            android:name=".activities.AtbashActivity"
             android:label="Atbash"
             android:parentActivityName=".MainActivity" >
         </activity>
         <activity
-            android:name=".LetterNumberActivity"
+            android:name=".activities.LetterNumberActivity"
             android:label="Letter-Number Cipher"
             android:parentActivityName=".MainActivity" >
         </activity>
         <activity
-            android:name=".VigenereCipherActivity"
+            android:name=".activities.VigenereCipherActivity"
             android:label="Vigenère Cipher"
             android:parentActivityName=".MainActivity" >
         </activity>
         <activity
-            android:name=".FrequencyActivity"
+            android:name=".activities.FrequencyActivity"
             android:label="Frequency Analysis"
             android:parentActivityName=".MainActivity" >
         </activity>
         <activity
-            android:name=".SplashScreenActivity"
+            android:name=".activities.SplashScreenActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme" >
         </activity>
         <activity
-            android:name=".Rot13CipherActivity"
+            android:name=".activities.Rot13CipherActivity"
             android:label="Rot-13 Cipher"
             android:parentActivityName=".MainActivity" >
             <meta-data

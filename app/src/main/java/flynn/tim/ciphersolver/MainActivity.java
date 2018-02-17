@@ -3,7 +3,7 @@ package flynn.tim.ciphersolver;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,8 +12,15 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import flynn.tim.ciphersolver.activities.AtbashActivity;
+import flynn.tim.ciphersolver.activities.CaesarCipherActivity;
+import flynn.tim.ciphersolver.activities.FrequencyActivity;
+import flynn.tim.ciphersolver.activities.Rot13CipherActivity;
+import flynn.tim.ciphersolver.activities.StringReversalActivity;
+import flynn.tim.ciphersolver.activities.VigenereCipherActivity;
 
-public class MainActivity extends ActionBarActivity {
+
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,55 +36,49 @@ public class MainActivity extends ActionBarActivity {
         cipherList.add(new Result("Caesar Cipher", false, false));
         cipherList.add(new Result("Frequency Analysis", false, false));
         cipherList.add(new Result("Rot-13 Cipher", false, false));
-        cipherList.add(new Result ("Vigenère Cipher", false, false));
+        cipherList.add(new Result("Vigenère Cipher", false, false));
         cipherList.add(new Result("Atbash Cipher", false, false));
         //cipherList.add(new Result ("Letter-Number Cipher", false, false));
-        cipherList.add(new Result ("Reverse Text", false, false));
+        cipherList.add(new Result("Reverse Text", false, false));
 
         MainListAdapter adapter = new MainListAdapter(getApplicationContext(), R.layout.list_item_main, cipherList);
         listview.setAdapter(adapter);
         //Set click listener for each item in the listview
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                if(cipherList.get(position).getResult().contentEquals("Caesar Cipher"))
-                {
+                if (cipherList.get(position).getResult().contentEquals("Caesar Cipher")) {
                     Intent i = new Intent(MainActivity.this, CaesarCipherActivity.class);
                     MainActivity.this.startActivity(i);
                     //MainActivity.this.finish();
                 }
 
-                if(cipherList.get(position).getResult().contentEquals("Frequency Analysis"))
-                {
+                if (cipherList.get(position).getResult().contentEquals("Frequency Analysis")) {
                     Intent i = new Intent(MainActivity.this, FrequencyActivity.class);
                     MainActivity.this.startActivity(i);
                     //MainActivity.this.finish();
                 }
 
-                if(cipherList.get(position).getResult().contentEquals("Rot-13 Cipher"))
-                {
+                if (cipherList.get(position).getResult().contentEquals("Rot-13 Cipher")) {
                     Intent i = new Intent(MainActivity.this, Rot13CipherActivity.class);
                     MainActivity.this.startActivity(i);
                     //MainActivity.this.finish();
                 }
 
-                if(cipherList.get(position).getResult().contentEquals("Vigenère Cipher"))
-                {
+                if (cipherList.get(position).getResult().contentEquals("Vigenère Cipher")) {
                     Intent i = new Intent(MainActivity.this, VigenereCipherActivity.class);
                     MainActivity.this.startActivity(i);
                     //MainActivity.this.finish();
                 }
 
-                if(cipherList.get(position).getResult().contentEquals("Reverse Text"))
-                {
+                if (cipherList.get(position).getResult().contentEquals("Reverse Text")) {
                     Intent i = new Intent(MainActivity.this, StringReversalActivity.class);
                     MainActivity.this.startActivity(i);
                     //MainActivity.this.finish();
                 }
 
-                if(cipherList.get(position).getResult().contentEquals("Atbash Cipher"))
-                {
+                if (cipherList.get(position).getResult().contentEquals("Atbash Cipher")) {
                     Intent i = new Intent(MainActivity.this, AtbashActivity.class);
                     MainActivity.this.startActivity(i);
                     //MainActivity.this.finish();
